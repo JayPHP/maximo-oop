@@ -1,0 +1,13 @@
+development:
+  host: localhost
+  database: maximo
+  username: root
+  password: password
+  charset: utf8
+
+production:
+  host: 127.0.0.1
+  database: maximo
+  username: root
+  password: password
+  charset: utf8

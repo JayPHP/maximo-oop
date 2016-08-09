@@ -1,0 +1,84 @@
+{% extends "layouts/#{app_layout_name}" %}
+{% block content %}
+    <form role="form" method="POST">
+        <div class="row form-content">
+            <div class="col-xs-10 col-sm-11">
+                <h3>Maximo</h3>
+                <p class="no-margin" style="color:#C3232D; font-weight:bold;">* Required</p>
+            </div>
+            <div class="col-xs-12">
+                <h4>Quick Service</h4>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group required">
+                    <label for="description">Description</label>
+                    <input name="description" required="required" type="text" class="form-control" id="description">
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <div class="input select required form-group no-margin">
+                    <label for="building">Which Building?</label>
+                    <select name="building" id="building" required="required" class="form-control">
+                        <option value=""></option>
+                        <option value="Building 1">Building 1</option>
+                        <option value="Building 2">Building 2</option>
+                        <option value="Building 3">Building 3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <div class="form-group required no-margin">
+                    <label for="area">Room</label>
+                    <input name="room" type="text" required="required" class="form-control" id="area">
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <h4>Full Service</h4>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <div class="form-group">
+                    <label for="name">Requester's Name</label>
+                    <input name="name" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <div class="form-group">
+                    <label for="department">Department</label>
+                    <input name="department" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <div class="form-group">
+                    <label for="phone">Contact phone number</label>
+                    <input name="phone" type="tel" class="form-control">
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <div class="input select form-group">
+                    <label for="priority">Priority</label>
+                    <select name="priority" id="priority" type="text" class="form-control">
+                        <option value=""></option>
+                        <option value="Priority 1">Priority 1</option>
+                        <option value="Priority 2">Priority 2</option>
+                        <option value="Priority 3">Priority 3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <div class="form-group">
+                    <label for="additional">Email Address</label>
+                    <input type="email" class="form-control" name="email" id="email">
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <div class="form-group">
+                    <label for="additional">Any Additional Information</label>
+                    <input type="text" class="form-control" name="additional" id="additional">
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <button style="width:100%" type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
