@@ -7,7 +7,8 @@
 
 namespace Jay\Controllers;
 
-use Jay\Tables\Tickets as Table;
+use Jay\Models\Tables\Ticket as Table;
+use Jay\Models\Entities\Ticket;
 use Symfony\Component\HttpFoundation\Request;
 use Jay\System\Template;
 use Jay\System\Flash;
@@ -29,11 +30,10 @@ class Tickets extends Application
 
     public function create()
     {
-        $ticket = $this->tickets->createEntity($this->request->request->all());
-        $ticket->sent = (int) false;
-        $ticket->date = date('Y-m-d H:i:s');
+        $ticket = new Ticket;
+        $this->tickets->mergeEntity($ticket, $this->request->request->all());
 
-        if ($this->tickets->save($ticket)) {
+        if ($this->tickets->create($ticket)) {
             $this->flash->info('Please review your ticket and submit');
             $this->redirect('ticket/review', $ticket->id);
         }
@@ -45,7 +45,6 @@ class Tickets extends Application
     public function review($params) 
     {
         $ticket = $this->tickets->get($params['id']);
-        $ticket->id = $params['id'];
 
         $this->isEditable($ticket);
         $this->template->render('review', (array) $ticket);
@@ -55,9 +54,9 @@ class Tickets extends Application
     public function update($params)
     {
         $ticket = $this->tickets->get($params['id']);
+        
         $this->isEditable($ticket);
-
-        $this->tickets->updateEntity($ticket, $this->request->request->all());
+        $this->tickets->mergeEntity($ticket, $this->request->request->all());
 
         if ($this->tickets->update($params['id'], $ticket)) {
             $this->flash->success('Your ticket has been updated');
